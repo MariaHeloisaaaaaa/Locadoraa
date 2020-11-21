@@ -122,7 +122,7 @@ public class JFCadastroCliente extends JFrame {
 				Cliente c = new Cliente();
 				ClienteDAO dao = new ClienteDAO();
 				c.setNome(txtNome.getText());
-				c.setCpf(txtEmail.getText());
+				c.setEmail(txtEmail.getText());
 				
 				if(rdbtnFeminino.isSelected()) {
 					c.setSexo(false);
