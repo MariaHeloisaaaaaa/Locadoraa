@@ -77,7 +77,7 @@ public class JFListarClientes extends JFrame {
 		scrollPane.setViewportView(jtCliente);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(71, 227, 89, 23);
+		btnCadastrar.setBounds(62, 227, 98, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");
@@ -99,7 +99,7 @@ public class JFListarClientes extends JFrame {
 			modelo.addRow(new Object[] {
 					c.getIdCliente(),
 					c.getNome(),
-					c.getCpf(),				
+					c.getEmail(),				
 			});
 		}
 
