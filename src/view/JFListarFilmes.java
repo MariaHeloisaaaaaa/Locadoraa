@@ -71,7 +71,7 @@ public class JFListarFilmes extends JFrame {
 		scrollPane.setViewportView(jtFilme);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(63, 227, 89, 23);
+		btnCadastrar.setBounds(56, 227, 96, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");

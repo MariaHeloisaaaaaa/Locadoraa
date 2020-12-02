@@ -32,4 +32,9 @@ public class ClienteDAO {
 		}
 	}
 
+	public Object read() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
