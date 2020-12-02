@@ -19,6 +19,10 @@ import javax.swing.JButton;
 
 public class JFListarClientes extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -987594831163898288L;
 	private JPanel contentPane;
 	private JTable jtCliente;
 
@@ -51,8 +55,8 @@ public class JFListarClientes extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Listar Clientes");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 11, 124, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 11, 170, 25);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -73,15 +77,15 @@ public class JFListarClientes extends JFrame {
 		scrollPane.setViewportView(jtCliente);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(22, 227, 89, 23);
+		btnCadastrar.setBounds(71, 227, 89, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.setBounds(149, 227, 89, 23);
+		btnAlterar.setBounds(170, 227, 89, 23);
 		contentPane.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(277, 227, 89, 23);
+		btnExcluir.setBounds(269, 227, 89, 23);
 		contentPane.add(btnExcluir);
 		
 		readJTable();
