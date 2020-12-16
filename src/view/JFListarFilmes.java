@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import model.dao.FilmeDAO;
 import model.bean.Filme;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFListarFilmes extends JFrame {
 
@@ -48,13 +51,13 @@ public class JFListarFilmes extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Lista de Filmes ");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(10, 11, 165, 23);
+		JLabel lblNewLabel = new JLabel("Listar Filmes");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(10, 11, 115, 14);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 51, 414, 165);
+		scrollPane.setBounds(10, 48, 414, 176);
 		contentPane.add(scrollPane);
 		
 		jtFilme = new JTable();
@@ -65,21 +68,34 @@ public class JFListarFilmes extends JFrame {
 				{null, null, null, null},
 			},
 			new String[] {
-				"idFilme", "Titulo", "Categoria", "Tempo"
+				"idFilme", "T\u00EDtulo", "Categoria", "Tempo"
 			}
 		));
 		scrollPane.setViewportView(jtFilme);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(56, 227, 96, 23);
+		btnCadastrar.setBounds(20, 227, 89, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.setBounds(162, 227, 89, 23);
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//verificar se há linha selecionada
+				if(jtFilme.getSelectedRow()!= -1) {
+					JFAtualizarFilme af = new JFAtualizarFilme(
+							(int)jtFilme.getValueAt(jtFilme.getSelectedRow(), 0));
+					af.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecione um filme!");
+				}
+				readJTable();
+			}
+		});
+		btnAlterar.setBounds(148, 227, 89, 23);
 		contentPane.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(261, 227, 89, 23); 
+		btnExcluir.setBounds(278, 227, 89, 23); 
 		contentPane.add(btnExcluir);
 		
 		readJTable();

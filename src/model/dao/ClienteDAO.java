@@ -60,5 +60,24 @@ public class ClienteDAO {
 		}
 		return clientes;
 	}
+	public void update(Cliente c) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+
+		try {
+			stmt = con.prepareStatement("UPDATE cliente SET nome=?, cpf=?, sexo=?"
+					+ " WHERE idCliente=?;");
+			stmt.setString(1, c.getNome());
+			stmt.setString(2, c.getEmail());
+			stmt.setBoolean(3, c.isSexo());
+			stmt.setInt(4, c.getIdCliente());
+			stmt.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro ao atualizar: "+ e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt);
+		}
+}
 
 }
