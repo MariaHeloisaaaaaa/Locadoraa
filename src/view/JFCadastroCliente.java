@@ -49,7 +49,7 @@ public class JFCadastroCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public JFCadastroCliente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -105,11 +105,23 @@ public class JFCadastroCliente extends JFrame {
 		sexo.add(rdbtnMasculino);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNome.setText(null);
+				txtEmail.setText(null);
+				sexo.clearSelection();
+			}
+		});
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnLimpar.setBounds(174, 227, 89, 23);
 		contentPane.add(btnLimpar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.setBounds(273, 227, 89, 23);
 		contentPane.add(btnCancelar);
@@ -131,6 +143,7 @@ public class JFCadastroCliente extends JFrame {
 				}
 				
 				dao.create(c);
+				dispose();
 			}
 		});
 		btnCadastrar.setBounds(58, 227, 105, 23);

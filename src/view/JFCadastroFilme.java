@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class JFCadastroFilme extends JFrame {
 
+
 	private JPanel contentPane;
 	private JTextField txtTitulo;
 	private JTextField txtSinopse;
@@ -48,7 +49,7 @@ public class JFCadastroFilme extends JFrame {
 	 * Create the frame.
 	 */
 	public JFCadastroFilme() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 517, 370);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -158,6 +159,7 @@ public class JFCadastroFilme extends JFrame {
 					f.setDublado(false);
 				}
 				dao.create(f);
+				dispose();
 				
 			}
 		});
@@ -165,11 +167,26 @@ public class JFCadastroFilme extends JFrame {
 		contentPane.add(btnCadastrar);
 
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtTitulo.setText(null);
+				txtSinopse.setText(null);
+				txtCategoria.setText(null);
+				spTempo.setValue(0);
+				imagem.clearSelection();
+				audio.clearSelection();				
+			}
+		});
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnLimpar.setBounds(221, 295, 80, 23);
 		contentPane.add(btnLimpar);
 
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.setBounds(303, 295, 97, 23);
 		contentPane.add(btnCancelar);
